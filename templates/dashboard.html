@@ -1,0 +1,22 @@
+{% extends 'header.html' %}
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    {% block dashboard %}
+    <div class="content">
+        <div class="left-section">
+            <h1 class="heading">Sales Forecasting Software</h1>
+            <h3>Sales forecasting helps you to estimate your revenue and optimize your sales performance. Take accurate and informed decisions to avoid shortcomings and increase your sales growth. Use Sales forecasting software to boost your sales performance.</h3>
+        </div>
+        <div class="right-section">
+            <img src="{{ url_for('static', filename = 'sale.png') }}" id="icon" alt="Sales Forecasting Photo" />
+
+        </div>
+        <div style="clear: both;"></div> 
+    </div>
+    {% endblock %}
+</body>
+</html>
+

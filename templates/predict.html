@@ -1,0 +1,146 @@
+{% extends 'header.html'%}
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>SalesMarket Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+
+<style>
+body {
+  background-image: url();
+  background-position: 400%;
+  background-size: cover;
+}
+
+h1{
+    color: rgb(253, 254, 255);
+}
+</style>
+
+
+{% block predict %}
+ <div class="login">
+
+	<h1 >Predict total Output Sales</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('results')}}"method="post">
+    	  <input type="text" name="a" placeholder="Item Weight" required="required" />
+
+        <input type="hidden" name="b" id="b" value="0" required="required" />
+
+        <select id="b_dropdown">
+            <option value="" disabled selected>Fat Content</option>
+            <option value="0">Low Fat</option>
+            <option value="1">Regular</option>
+            <option value="2">High Fat</option>
+        </select>
+		    <input type="text" name="c" placeholder="Item Visibility" required="required" />
+        <input type="text" name="d" placeholder="Item MRP" required="required" />
+
+        <input type="hidden" name="e" id="e" value="0" required="required" />
+
+        <select id="e_dropdown">
+            <option value="" disabled selected>Outlet Size</option>
+            <option value="0">Small</option>
+            <option value="1">Medium</option>
+            <option value="2">High</option>
+        </select>
+        
+        <input type="hidden" name="f" id="f" value="0" required="required" />
+
+        <select id="f_dropdown">
+            <option value="" disabled selected>Outlet Location Type</option>
+            <option value="0">Tier 1</option>
+            <option value="1">Tier 2</option>
+            <option value="2">Tier 3</option>
+        </select>
+
+        <input type="hidden" name="g" id="g" value="0" required="required" />
+
+        <select id="g_dropdown">
+            <option value="" disabled selected>Outlet Type</option>
+            <option value="0">Grocery Store</option>
+            <option value="1">Supermarket tier 1</option>
+            <option value="2">Supermarket tier 2</option>
+            <option value="3">Supermarket tier 3</option>
+        </select>
+
+        <input type="hidden" name="h" id="h" value="0" required="required" />
+
+        <select id="h_dropdown">
+            <option value="" disabled selected>Item Sales Type</option>
+            <option value="0">Drinks</option>
+            <option value="1">Foods and Drinks</option>
+            <option value="2">Non-consumable</option>
+        </select>
+
+        <input type="text" name="i" id="year" placeholder="Establishment Year" required="required" />
+
+        <input type="hidden" name="j" id="j" value="0" required="required" />
+
+        <select id="j_dropdown">
+            <option value="" disabled selected>Outlet Identification Number</option>
+            <option value="0">OUT10</option>
+            <option value="1">OUT13</option>
+            <option value="2">OUT17</option>
+            <option value="3">OUT18</option>
+            <option value="4">OUT19</option>
+            <option value="5">OUT27</option>
+            <option value="6">OUT35</option>
+            <option value="7">OUT45</option>
+            <option value="8">OUT46</option>
+            <option value="9">OUT49</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+ {% endblock %}
+
+</body>
+</html>
+
+<script>
+  document.getElementById("b_dropdown").addEventListener("change", function() {
+      document.getElementById("b").value = this.value;
+  });
+
+  document.getElementById("e_dropdown").addEventListener("change", function() {
+      document.getElementById("e").value = this.value;
+  });
+
+  document.getElementById("f_dropdown").addEventListener("change", function() {
+      document.getElementById("f").value = this.value;
+  });
+
+  document.getElementById("g_dropdown").addEventListener("change", function() {
+      document.getElementById("g").value = this.value;
+  });
+
+  document.getElementById("year").addEventListener("change", function() {
+      document.getElementById("year").value = 2013 - this.value;
+  });
+
+  document.getElementById("j_dropdown").addEventListener("change", function() {
+      document.getElementById("j").value = this.value;
+  });
+
+  document.getElementById("h_dropdown").addEventListener("change", function() {
+      document.getElementById("h").value = this.value;
+  });
+</script>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-result.css') }}"> 
+    <title>Prediction</title>
+</head>
+<body>
+    <div class="container">
+        <p class="prediction">The total sales for the given product details is <span>{{prediction_text}}</span></p>
+        <img src="{{ url_for('static', filename='css/output.png') }}" alt="Description of the image">
+        <p class="image-description">The graph shows the model coefficients that are used to predict total output sales. The model coefficients are the numbers that are multiplied by the input variables to get the predicted output. The input variables in this case are Item Visibility, Outlet Size, Outlet_Location_Type, Item_Type_Combined, Item Weight, Outlet Years, Item_MRP, Item_Fat_Content, Outlet, and Outlet Type.
+            <br><br>
+            The graph shows that Item Visibility is the most important input variable, followed by Outlet Size, Outlet_Location_Type, and Item_Type_Combined. This means that these variables have the greatest impact on total output sales. The other input variables have a smaller impact, but they still contribute to the prediction.
+            <br><br>
+            The graph also shows that the coefficients for some of the input variables are negative. This means that these variables have a negative impact on total output sales. For example, a negative coefficient for Item Weight means that heavier items tend to sell less.</p>
+    </div>
+</body>
+</html>
